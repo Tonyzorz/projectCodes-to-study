@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTDMapper3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bit.pet.model.dao.AdoptionBoardCommentMapper">
+	<insert id="aWriterBoardComment" parameterType="AdoptionBoardCommentBean">
+		INSERT INTO adoptionBoardComment (abcNum, abcWriter, abcContent, abcRef) 
+		 VALUES (adoptionBoardComment_seq.nextval, #{abcWriter}, #{abcContent}, #{abcRef})
+	</insert>
+	
+	<select id="aSelectBoardComment" parameterType="AdoptionBoardCommentBean" resultType="AdoptionBoardCommentBean">
+		SELECT * FROM adoptionBoardComment
+		 WHERE abcRef = #{abcRef}
+	</select>
+	
+	<delete id="aDeleteBoardComment" parameterType="AdoptionBoardCommentBean">
+		DELETE adoptionBoardComment WHERE abcNum = #{abcNum}	
+	</delete>
+	
+	<update id="aModifyBoardComment" parameterType="AdoptionBoardCommentBean">
+		UPDATE adoptionBoardComment SET abcContent = #{abcContent} 
+		WHERE abcNum = #{abcNum}
+	</update>
+</mapper>

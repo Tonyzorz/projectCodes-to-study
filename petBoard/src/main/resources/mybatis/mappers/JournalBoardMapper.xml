@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0 //EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bit.pet.model.dao.JournalBoardMapper">
+	<!-- 게시판 전부 뿌려줌 -->
+	<select id="jMainBoard" parameterType="JournalBoardBean" resultType="JournalBoardBean">
+		select jbNum, jbTitle, jbWriter, jbDate, jbHit, jbLike, jbGroup, jbStep, jbIndent, jbPicUrl from journalBoard Order by jbGroup DESC, jbStep ASC
+	</select>
+	<!-- 선택한 글보기  -->
+	<select id="jSelectBoard" parameterType="JournalBoardBean" resultType="JournalBoardBean">
+		SELECT * from journalBoard WHERE jbNum=#{jbNum}
+	</select>
+	<!-- 글쓰기 -->
+	<insert id="jWriteBoard" parameterType="JournalBoardBean">
+	INSERT INTO journalBoard (jbNum, jbTitle, jbContent, jbWriter, jbGroup, jbHit, jbLike, jbStep, jbIndent, jbPicUrl) 
+	VALUES (journalBoard_seq.nextval, #{jbTitle}, #{jbContent}, #{jbWriter}, journalBoard_seq.currval, 0, 0, 0, 0, #{jbPicUrl})
+	</insert>
+	<!-- 수정할떄 -->
+	<update id="jModifyBoard" parameterType="JournalBoardBean">
+	UPDATE journalBoard SET jbTitle = #{jbTitle},
+	jbContent = #{jbContent}, jbPicUrl = #{jbPicUrl} WHERE jbNum=#{jbNum}
+	</update>
+	<!-- 조회수 -->
+	<update id="jBoardHit" parameterType="JournalBoardBean">
+	UPDATE journalBoard SET journalBoard.jbHit = journalBoard.jbHit+1 WHERE jbNum=#{jbNum}
+	</update>
+	<!-- 좋아요 -->
+	<update id="jBoardLike" parameterType="JournalBoardBean">
+	UPDATE journalBoard SET journalBoard.jbLike = journalBoard.jbLike+1 WHERE jbNum=#{jbNum}
+	</update>
+	<delete id="jDeleteBoard">
+	DELETE FROM journalBoard WHERE jbNum = #{jbNum} 
+	</delete>
+		
+	<!-- 답변의 인덴트 해주는 역할 -->
+	<update id="jReplyBoardIndent" parameterType="JournalBoardBean">
+	UPDATE journalBoard SET jbStep = jbStep + 1 where jbGroup = #{jbGroup} and jbStep > #{jbStep}
+	</update>
+	<!-- 답변을 생성해주는 역할 -->
+	<insert id="jReplyBoardReply" parameterType="JournalBoardBean">
+	INSERT INTO journalBoard(jbNum, jbTitle, jbContent, jbWriter, jbGroup, jbStep, jbIndent, jbPicUrl) 
+	VALUES (journalBoard_seq.nextval, #{jbTitle}, #{jbContent}, #{jbWriter}, #{jbGroup}, #{jbStep}+1, #{jbIndent}+1 , #{jbPicUrl})
+	</insert>
+</mapper>

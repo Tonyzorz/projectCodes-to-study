@@ -1,0 +1,55 @@
+/* 분양게시판 */
+body {
+  background-color: #f1f1f1;
+  padding: 20px;
+  font-family: Arial;
+  
+}
+a{text-decoration:none;}
+/* Center website */
+.main {
+  max-width: 1000px;
+  width: 100%;
+  margin: auto;
+}
+.row {
+  margin: 10px 10px;
+}
+
+/* Add padding BETWEEN each column */
+.row,
+.row > .column{
+  padding: 8px;
+}
+
+/* Create three equal columns that floats next to each other */
+.column{
+	
+  float: left;
+  width: 18.00%;
+  
+}
+
+/* Clear floats after rows  */
+.row:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* Content */
+.content {
+  background-color: white;
+  padding: 10px;
+}
+
+
+
+#footer{
+	border-top:1px solid gray;
+	line-height:100px;
+	height:100px;
+	width:100%;
+	clear:both;
+	text-align:center;
+}

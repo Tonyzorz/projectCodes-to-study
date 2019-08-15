@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTDMapper3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bit.pet.model.dao.AdoptionBoardMapper">
+	<select id="aMainBoard" resultType="AdoptionBoardBean">
+		SELECT abNum, abTitle,
+		abWriter, abCategory, abDate, abHit, abLike, abPicUrl, abKind, abAge, abGender, abPrice  FROM adoptionBoard ORDER BY abNum DESC
+	</select>
+
+	<select id="aCategoryBoard" parameterType="AdoptionBoardBean">
+		SELECT abNum, abTitle,
+		abWriter, abCategory, abDate, abHit, abLike
+		FROM adoptionBoard WHERE abCategory = #{abCategory}
+	</select>
+
+	<select id="aSelectBoard" parameterType="AdoptionBoardBean" resultType="AdoptionBoardBean">
+		SELECT * FROM
+		adoptionBoard WHERE abNum = #{abNum}
+	</select>
+	
+	<select id="aModifyView" parameterType="AdoptionBoardBean" resultType="AdoptionBoardBean">
+		SELECT * FROM
+		adoptionBoard WHERE abNum = #{abNum}
+	</select>
+	
+	<insert id="aWriterBoard" parameterType="AdoptionBoardBean" >
+     	INSERT INTO adoptionBoard (abCategory, abNum, abWriter, abTitle,
+     	 abKind, abAge, abGender, abPrice, abContent, abPicUrl) values 
+     	(#{abCategory}, adoptionBoard_seq.nextval, #{abWriter}, #{abTitle}
+     	, #{abKind}, #{abAge}, #{abGender}, #{abPrice}, #{abContent}, #{abPicUrl})	
+   	</insert>
+
+	<update id="aModifyBoard" parameterType="AdoptionBoardBean">
+		UPDATE adoptionBoard SET abTitle=#{abTitle}, abContent=#{abContent}, 
+		 abCategory=#{abCategory}, abKind=#{abKind}, abAge=#{abAge}, 
+		 abGender=#{abGender}, abPrice=#{abPrice}
+		 WHERE abNum = #{abNum}
+	</update>
+
+	<delete id="aDeleteBoard" parameterType="AdoptionBoardBean">
+		DELETE adoptionBoard WHERE abNum = #{abNum}
+	</delete>
+
+	<update id="aBoardHit" parameterType="AdoptionBoardBean">
+		UPDATE adoptionBoard SET
+		abHit = abHit+1 WHERE abNum = #{abNum}
+	</update>
+
+<!-- 	<update id="aBoardLike" parameterType="AdoptionBoardBean"> -->
+<!-- 		UPDATE adoptionBoard SET -->
+<!-- 		abLike = abLike+1 WHERE abNum = #{abNum} -->
+<!-- 	</update> -->
+	<update id="aBoardLike">
+		UPDATE adoptionBoard SET
+		abLike = abLike+1 WHERE abNum = #{abNum}
+	</update>
+	
+	<select id="aCategoryBoardSelect" resultType="AdoptionBoardBean">
+		SELECT abNum, abTitle,
+		abWriter, abCategory, abDate, abHit, abLike, abPicUrl
+		FROM adoptionBoard WHERE abCategory = #{abCategory}
+	</select>
+</mapper>

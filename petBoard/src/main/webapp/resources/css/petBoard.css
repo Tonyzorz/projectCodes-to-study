@@ -1,0 +1,130 @@
+@charset "EUC-KR";
+/* mainpage.jsp */
+#header{
+	width:100%;
+	text-align:center;
+	border-bottom: solid;
+	font-size:2em;
+	font-weight:bold;
+	margin: 10;
+	overflow:hidden;
+}
+#header #title{
+	margin: 100px;
+	padding: 10px;
+}
+
+#title a:link, a:visited{
+	text-decoration:none;
+	color:black;
+}
+#header #userButton{
+	float:right;
+}
+
+#header #userButton #login,#logout,#signup{
+	size= 10px;
+	background-color: white; color: black;
+	font-size: 12px;
+	padding: 6px 12px;
+	border-radius: 4px;
+	border: 2px solid black;
+	transition-duration: 0.4s;
+	
+}
+a{text-decoration:none;}
+#signup:hover{
+	color:white;
+	background-color: black;
+}
+#login:hover{
+	color:white;
+	background-color: black;
+}
+#logout:hover{
+	color:white;
+	background-color: black;
+}
+#wrap{
+	width:100%;
+	overflow:hidden;
+}
+#sidebar{
+	
+	float:left;
+	width:40%;
+	
+}
+#content1{
+	float:left;
+}
+#content2{
+	clear:left;
+
+}
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 160px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Style page content */
+.main {
+  margin-left: 160px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+  padding: 0px 10px;
+}
+
+
+#divA, #divJ{
+	margin-left: 160px;
+}
+
+#content2 table, tr, td{
+	/* width:100%; */
+	text-align: left;
+	padding: 21px;
+}
+#content2 tr, td{
+	border-bottom: 1px solid black;
+}
+#content2 #title{
+	width:40%
+}
+#content2 tr td:last-child{
+	width:1%;
+    white-space:nowrap;	
+}
+#content2 tr:hover{
+	background-color:lightgray;
+}
+#contet2 #content2header{
+	border-bottom:100% solid black;
+}
+#picSize{
+	width: 140px;
+	height: 140px;
+	text-align: center;
+}
+
+

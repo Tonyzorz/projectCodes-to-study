@@ -1,0 +1,29 @@
+@charset "EUC-KR";
+/* 분양게시판것들*/
+
+#divA {
+	
+}
+#headerA {
+	border: 1px solid black;
+	text-size: 15px;
+	text-align:left;
+	overflow:hidden;
+}
+
+#headerA #titleBox{
+	border: 1px solid black;	
+	height:300px;
+}
+
+#modifyBtn #titleBtn{
+	float:right;
+}
+#divA2{
+	margin-left:165px;
+}
+
+
+#divA2 #comment {
+	width:800px;
+}

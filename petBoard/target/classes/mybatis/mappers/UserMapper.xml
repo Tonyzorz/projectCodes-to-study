@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0 //EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.bit.pet.model.dao.UserMapper">
+	<insert id="insertUserData" parameterType="userBean">
+		insert into UserData(userId, userPw, userEmail, userPhoneNum) values(#{userId},#{userPw},#{userEmail},#{userPhoneNum})
+	</insert>
+	
+	<select id="loginCheck" parameterType="userBean" resultType="userBean">
+		select * from UserData where userId=#{userId} and userPw=#{userPw}
+	</select>
+</mapper>
